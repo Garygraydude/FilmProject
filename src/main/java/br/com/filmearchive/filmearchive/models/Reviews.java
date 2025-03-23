@@ -5,26 +5,50 @@ import java.util.UUID;
 
 import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+@Entity
 public class Reviews {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private UUID id;
-
-    private User userId;
+@Column(length = 150, nullable = false)
+private User userId;
+    @Column(length = 150, nullable = false)
     private Long movieId;
+    @Column(length = 150, nullable = false)
     private Byte rating;
+    @Column(length = 150, nullable = false)
     private String comment;
+    @Column(length = 150, nullable = false)
     private LocalDate date;
+    
 //i had just remembered why i needed these but i kinda forgot already
     public Reviews(){}
 //full constructor
-    public Reviews(User userId, Long movieId, Byte rating, String comment, LocalDate date) {
-        this.userId = userId;
-        this.movieId = movieId;
-        this.rating = rating;
-        this.comment = comment;
-        this.date = date;
-    }
+public Reviews(User userId, Long movieId, Byte rating, String comment, LocalDate date) {
+    this.userId = userId;
+    this.movieId = movieId;
+    this.rating = rating;
+    this.comment = comment;
+    this.date = date;
+}
+    
+@ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "movie_id", nullable = false)
+private Movie movie;
 
+@ManyToOne(cascade = CascadeType.MERGE)
+@JoinColumn(name = "User_cpf", nullable = false)
+    
     public UUID getId() {
         return id;
     }
