@@ -100,4 +100,14 @@ public class MovieDTO {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'toModel'");
     }
+
+    public static Object toDTO(Movie newMovie) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'toDTO'");
+    }
+
+    public Integer getId() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getId'");
+    }
 }

@@ -128,5 +128,10 @@ private List<Reviews> reviews;
         this.duration = duration;
     }
 
+    public Movie get() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'get'");
+    }
+
     
 }

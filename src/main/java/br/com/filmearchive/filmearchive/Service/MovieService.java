@@ -1,4 +1,4 @@
-package Service;
+package br.com.filmearchive.filmearchive.Service;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,8 +24,8 @@ public class MovieService {
         return repository.save(movie);
     }
 
-    public Optional<Movie> findBytitle(String title) {
-        return repository.findByTitle(title);
+    public Optional<Movie> findBytitle(String id) {
+        return repository.findByTitle(id);
     }
 
     public Optional<Movie> findbyGenre(String genre) {
@@ -40,7 +40,4 @@ public class MovieService {
         return repository.findbyReleaseYear(releaseYear);
     }
 
-    public void remove(String title) {
-        repository.findByTitle(title);
-    }
 }
