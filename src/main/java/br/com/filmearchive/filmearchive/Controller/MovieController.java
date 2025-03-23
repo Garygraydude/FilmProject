@@ -21,41 +21,11 @@ import br.com.filmearchive.filmearchive.models.Movie;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
-@RestController
-@RequestMapping("/api/contact")
-@Tag(name = "Controlador de contatos", description = "Esse controlador tem como objetivo manipular os registros de contatos da nossa API")
-public class MovieController {
-    private final MovieService service;
+
 
     public MovieController(MovieService service) {
         this.service = service;
     }
 
-    @GetMapping
-    @Operation(summary = "Listagem de contatos", description = "Tem como objetivo listar todos os contatos cadastrados")
-    public ResponseEntity<List<Object>> findAll() {
-        List<Object> movie = service.findAll().stream().map(MovieDTO::toDTO).toList();
-        return ResponseEntity.ok(movie);
-    }
-
-    @PostMapping
-    public ResponseEntity<Object> register(@RequestBody MovieDTO movie) {
-    Movie newMovie = service.registerOrUpdate(movie.toModel());
-        if (newMovie.getId() != null) {
-            return ResponseEntity.created(generateUri("movie", newMovie.getId()))
-                    .body(MovieDTO.toDTO(newMovie));
-        }
-        return ResponseEntity.internalServerError().build();
-    }
-
-
-
-    private URI generateUri(String resource, Integer id) {
-        String uriString = "http://localhost:8080/api/" + resource + "/" + id;
-        return URI.create(uriString);
-    }
-}
-
     
-
-
+}

@@ -2,6 +2,7 @@ package br.com.filmearchive.filmearchive.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
@@ -24,8 +25,12 @@ public class MovieService {
         return repository.save(movie);
     }
 
-    public Optional<Movie> findBytitle(String id) {
-        return repository.findByTitle(id);
+    public Optional<Movie> findById(UUID id) {
+        return repository.findById(id);
+    }
+
+    public Optional<Movie> findByTitle(String title) {
+        return repository.findByTitle(title);
     }
 
     public Optional<Movie> findbyGenre(String genre) {
@@ -38,6 +43,10 @@ public class MovieService {
 
     public Optional<Movie> findbyReleaseYear(String releaseYear) {
         return repository.findbyReleaseYear(releaseYear);
+
     }
 
+    public void remove(Integer id) {
+        repository.deleteById(id);
+    }
 }
