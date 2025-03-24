@@ -3,7 +3,7 @@ package br.com.filmearchive.filmearchive.DTO;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.filmearchive.filmearchive.models.Users;
+import br.com.filmearchive.filmearchive.models.User;
 
 public class UsersDTO {
     private Long cpf;
@@ -47,12 +47,12 @@ public class UsersDTO {
         this.email = email;
     }
 
-    public Users toModel() {
+    public User toModel() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'toModel'");
     }
 
-    public static List<Users> findAll() {
+    public static List<User> findAll() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'findAll'");
     }

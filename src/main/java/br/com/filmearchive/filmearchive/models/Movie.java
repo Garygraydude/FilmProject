@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
 public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-     private Integer id;
+    private Long id;
   @Column(length = 150, nullable = false)
   private String title;
     @Column(length = 150, nullable = false)
@@ -60,11 +60,11 @@ public class Movie {
   
     
     }
-@OneToMany(mappedBy = "Movie", cascade = CascadeType.ALL, orphanRemoval = true)
+@OneToMany(mappedBy = "movie_Id", cascade = CascadeType.ALL, orphanRemoval = true)
 private List<Reviews> reviews;
     
     // getters and setters (did them early so i don't fucking forget them)
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
@@ -129,7 +129,7 @@ private List<Reviews> reviews;
     }
 
     public Movie get() {
-        // TODO Auto-generated method stub
+      
         throw new UnsupportedOperationException("Unimplemented method 'get'");
     }
 

@@ -4,13 +4,14 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import org.apache.catalina.User;
+
 import org.springframework.stereotype.Service;
 
 import br.com.filmearchive.filmearchive.Repository.MovieRepository;
 import br.com.filmearchive.filmearchive.Repository.ReviewsRepository;
 import br.com.filmearchive.filmearchive.models.Movie;
 import br.com.filmearchive.filmearchive.models.Reviews;
+import br.com.filmearchive.filmearchive.models.User;
 
 @Service
 public class ReviewService {

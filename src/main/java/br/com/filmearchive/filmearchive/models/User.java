@@ -11,7 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 @Entity
-public class Users {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
@@ -23,16 +23,16 @@ private String name;
     @Column(length = 150, nullable = false)
     List<String> review = new ArrayList<>();
     
-    public Users(){}
+    public User(){}
 
-    public Users(Long cpf, String name, String email, List<String> review) {
+    public User(Long cpf, String name, String email, List<String> review) {
         this.cpf = cpf;
         this.name = name;
         this.email = email;
         this.review = review;
     }
 
- @OneToMany(mappedBy = "publicacao", cascade = CascadeType.ALL, orphanRemoval = true)
+ @OneToMany(mappedBy = "id", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Reviews> reviews;
 
     public Long getCpf() {

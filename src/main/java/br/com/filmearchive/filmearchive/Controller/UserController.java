@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.filmearchive.filmearchive.DTO.MovieDTO;
@@ -21,7 +22,9 @@ import br.com.filmearchive.filmearchive.Repository.UserRepository;
 import br.com.filmearchive.filmearchive.Service.MovieService;
 import br.com.filmearchive.filmearchive.Service.UserService;
 import br.com.filmearchive.filmearchive.models.Movie;
-import br.com.filmearchive.filmearchive.models.Users;
+import br.com.filmearchive.filmearchive.models.User;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 public class UserController {
@@ -32,30 +35,32 @@ public class UserController {
     public UserController(UserService service) {
         this.service = service;
     }
+    
+   
 
     @PostMapping
-    public void register(@RequestBody UsersDTO users) {
-        Users newUsers = service.registerOrUpdate(users.toModel());
+    public void register(@RequestBody UsersDTO user) {
+        User newUsers = service.registerOrUpdate(user.toModel());
     }
 
  @PutMapping("/update")
  public ResponseEntity<?> updateProfile(@RequestBody UsersDTO usersDTO) {
      try {
 
-         Users updatedUsers = UserService.updateProfile(usersDTO);
+         User updatedUser = UserService.updateProfile(usersDTO);
 
-         return ResponseEntity.ok(updatedUsers);
+         return ResponseEntity.ok(updatedUser);
      } catch (Exception e) {
 
          return ResponseEntity.status(404).body("Usuario não encontrado");
      }
  }
-   public List<Users> findAll() {
+   public List<User> findAll() {
         return UsersDTO.findAll();
     }
 @GetMapping("/Users/{id}")
 public ResponseEntity<?> findById(@PathVariable Long cpf) {
-    Optional<Users> entityOptional = UserRepository.findById();
+    Optional<User> entityOptional = UserRepository.findById();
 
     if (entityOptional.isPresent()) {
         return ResponseEntity.ok(entityOptional.get());
@@ -68,7 +73,7 @@ public ResponseEntity<?> findById(@PathVariable Long cpf) {
 private UserRepository myEntityRepository;
 
 public boolean remove(Long cpf) {
-    Optional<Users> entity = UserRepository.findById(cpf);
+    Optional<User> entity = UserRepository.findById(cpf);
 
     if (entity.isPresent()) {
         UserRepository.delete(entity.get());
@@ -90,13 +95,15 @@ public boolean remove(Long cpf) {
  }
 
     @GetMapping("/Users")
- public ResponseEntity<List<UsersDTO>> findByEmail(String email) {
-     List<UsersDTO> UsersDTOs = UserService.findByEmail(email);
+    public ResponseEntity<List<UsersDTO>> findByEmail(String email) {
+        List<UsersDTO> UsersDTOs = UserService.findByEmail(email);
 
-     if (UsersDTOs.isEmpty()) {
-         return ResponseEntity.noContent().build();
-     }
+        if (UsersDTOs.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
 
-     return ResponseEntity.ok(UsersDTOs);
- }
+        return ResponseEntity.ok(UsersDTOs);
+    }
+
+ 
 }

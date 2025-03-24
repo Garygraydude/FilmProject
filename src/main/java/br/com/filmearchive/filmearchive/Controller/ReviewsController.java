@@ -4,8 +4,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +22,7 @@ import br.com.filmearchive.filmearchive.Service.MovieService;
 import br.com.filmearchive.filmearchive.Service.ReviewService;
 import br.com.filmearchive.filmearchive.models.Movie;
 import br.com.filmearchive.filmearchive.models.Reviews;
-import br.com.filmearchive.filmearchive.models.Users;
+import br.com.filmearchive.filmearchive.models.User;
 
 public class ReviewsController {
     private ReviewService service;
@@ -61,7 +62,7 @@ public class ReviewsController {
 
     @GetMapping("/Reviews")
     public ResponseEntity<List<ReviewsDTO>> findByAuthor(User author) {
-        List<ReviewsDTO> ReviewsDTOs = UserService.findByEmail(author);
+        List<ReviewsDTO> ReviewsDTOs = UserService.findbyEmail(author);
 
         if (ReviewsDTOs.isEmpty()) {
             return ResponseEntity.noContent().build();

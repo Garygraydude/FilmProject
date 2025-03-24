@@ -1,6 +1,5 @@
 package br.com.filmearchive.filmearchive.Repository;
 
-
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -12,14 +11,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 
-@Entity
+
+@Table(name = "Movie")
 public interface MovieRepository extends JpaRepository<Movie, String> {
-    @Id
+    
+    
+    
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
+    
     @Column
     public List<MovieDTO> findByTitle(String title);
 
@@ -53,6 +54,5 @@ public interface MovieRepository extends JpaRepository<Movie, String> {
     }
 
     public void deleteById(Integer id);
-
 
 }

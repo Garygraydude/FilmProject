@@ -12,7 +12,7 @@ import br.com.filmearchive.filmearchive.DTO.UsersDTO;
 import br.com.filmearchive.filmearchive.Repository.MovieRepository;
 import br.com.filmearchive.filmearchive.Repository.UserRepository;
 import br.com.filmearchive.filmearchive.models.Movie;
-import br.com.filmearchive.filmearchive.models.Users;
+
 
 @Service
 public class UserService {
@@ -22,8 +22,8 @@ public class UserService {
         this.repository = repository;
     }
 
-    public Users registerOrUpdate(Users users) {
-        return (Users) repository.save(users);
+    public User registerOrUpdate(User users) {
+        return (User) repository.save(users);
     }
 
     public List<User> findAll() {
@@ -42,11 +42,11 @@ public class UserService {
         return repository.findByName(name);
     }
 
-    public Optional<Users> findbyEmail(String email) {
+    public Optional<User> findbyEmail(String email) {
         return repository.findByEmail(email);
     }
 
-    public Users updateProfile(UsersDTO usersDTO) {
+    public br.com.filmearchive.filmearchive.models.User updateProfile(UsersDTO usersDTO) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'updateProfile'");
     }
@@ -57,14 +57,32 @@ public class UserService {
     }
 
     public List<UsersDTO> findByEmail(String email) {
-        // TODO Auto-generated method stub
+   
         throw new UnsupportedOperationException("Unimplemented method 'findByEmail'");
     }
 
     public List<ReviewsDTO> findByEmail(
             org.springframework.boot.autoconfigure.security.SecurityProperties.User author) {
-        // TODO Auto-generated method stub
+        
         throw new UnsupportedOperationException("Unimplemented method 'findByEmail'");
     }
+
+    public List<ReviewsDTO> findByEmail(User author) {
+      
+        throw new UnsupportedOperationException("Unimplemented method 'findByEmail'");
+    }
+
+    public br.com.filmearchive.filmearchive.models.User registerOrUpdate(
+            br.com.filmearchive.filmearchive.models.User model) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'registerOrUpdate'");
+    }
+
+    public List<ReviewsDTO> findbyEmail(br.com.filmearchive.filmearchive.models.User author) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findbyEmail'");
+    }
+
+    
 
 }

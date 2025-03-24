@@ -3,7 +3,7 @@ package br.com.filmearchive.filmearchive.models;
 import java.time.LocalDate;
 import java.util.UUID;
 
-import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
+
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -23,7 +23,7 @@ public class Reviews {
 @Column(length = 150, nullable = false)
 private User Author;
     @Column(length = 150, nullable = false)
-    private Long movieId;
+    private Long movie_Id;
     @Column(length = 150, nullable = false)
     private Byte rating;
     @Column(length = 150, nullable = false)
@@ -34,20 +34,20 @@ private User Author;
 //i had just remembered why i needed these but i kinda forgot already
     public Reviews(){}
 //full constructor
-public Reviews(User userId, Long movieId, Byte rating, String comment, LocalDate date) {
+public Reviews(User userId, Long movie_Id, Byte rating, String comment, LocalDate date) {
     this.Author = userId;
-    this.movieId = movieId;
+    this.movie_Id = movie_Id;
     this.rating = rating;
     this.comment = comment;
     this.date = date;
 }
     
 @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "movie_id", nullable = false)
+    @JoinColumn(name = "movie_Id", nullable = false)
 private Movie movie;
 
 @ManyToOne(cascade = CascadeType.MERGE)
-@JoinColumn(name = "User_cpf", nullable = false)
+@JoinColumn(name = "id", nullable = false)
     
     public UUID getId() {
         return id;
@@ -66,11 +66,11 @@ private Movie movie;
     }
 
     public Long getMovieId() {
-        return movieId;
+        return movie_Id;
     }
 
     public void setMovieId(Long movieId) {
-        this.movieId = movieId;
+        this.movie_Id = movieId;
     }
 
     public Byte getRating() {
