@@ -18,7 +18,15 @@ public interface ReviewsRepository extends JpaRepository<Reviews, String> {
 
     public void deleteById(UUID id);
 
-    public Optional<Reviews> findById(UUID id);
+    public static Optional<Reviews> findById(UUID id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findById'");
+    }
 
     public List<Reviews> findByUserId(org.apache.catalina.User userId);
+
+    public static void delete(Reviews reviews) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+    }
 }

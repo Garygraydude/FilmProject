@@ -21,7 +21,7 @@ public class Reviews {
 
     private UUID id;
 @Column(length = 150, nullable = false)
-private User userId;
+private User Author;
     @Column(length = 150, nullable = false)
     private Long movieId;
     @Column(length = 150, nullable = false)
@@ -35,7 +35,7 @@ private User userId;
     public Reviews(){}
 //full constructor
 public Reviews(User userId, Long movieId, Byte rating, String comment, LocalDate date) {
-    this.userId = userId;
+    this.Author = userId;
     this.movieId = movieId;
     this.rating = rating;
     this.comment = comment;
@@ -58,11 +58,11 @@ private Movie movie;
     }
 
     public User getUserId() {
-        return userId;
+        return Author;
     }
 
     public void setUserId(User userId) {
-        this.userId = userId;
+        this.Author = userId;
     }
 
     public Long getMovieId() {

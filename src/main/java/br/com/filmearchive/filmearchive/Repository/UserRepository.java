@@ -21,6 +21,21 @@ public interface UserRepository extends JpaRepository<Users, String> {
 
     public void deleteByCpf(Long cpf);
 
+    public static Optional<Users> findById() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findById'");
+    }
+
+    public static Optional<Users> findById(Long cpf) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findById'");
+    }
+
+    public static void delete(Users users) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+    }
+
 
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import br.com.filmearchive.filmearchive.DTO.MovieDTO;
 import br.com.filmearchive.filmearchive.models.Movie;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -20,7 +21,7 @@ public interface MovieRepository extends JpaRepository<Movie, String> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     @Column
-    public Optional<Movie> findByTitle(String title);
+    public List<MovieDTO> findByTitle(String title);
 
     @Column
     public List<Movie> findAll();
@@ -32,15 +33,25 @@ public interface MovieRepository extends JpaRepository<Movie, String> {
     public Optional<Movie> findByGenre(String genre);
 
     @Column
-    public Optional<Movie> findByDirector(String director);
+    public List<MovieDTO> findByDirector(String director);
 
     @Column
-    public Optional<Movie> findbyReleaseYear(String releaseYear);
+    public List<MovieDTO> findbyReleaseYear(String releaseYear);
 
     @Column
-    public Optional<Movie> findById(UUID id);
+    public static Optional<Movie> findById(UUID id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findById'");
+    }
 
     @Column
+    public void deleteById(UUID id);
+
+    public static void delete(Movie movie) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+    }
+
     public void deleteById(Integer id);
 
 

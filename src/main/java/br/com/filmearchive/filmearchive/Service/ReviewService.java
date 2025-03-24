@@ -26,7 +26,7 @@ public class ReviewService {
     }
 
     public Optional<Reviews> findById(UUID id) {
-        return repository.findById(id);
+        return ReviewsRepository.findById(id);
     }
 
     public void remove(UUID id) {

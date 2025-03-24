@@ -5,10 +5,12 @@ import java.util.UUID;
 
 import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 
+import br.com.filmearchive.filmearchive.models.Reviews;
+
 public class ReviewsDTO {
  private UUID id;
 
-    private User userId;
+    private User Author;
     private Long movieId;
     private Byte rating;
     private String comment;
@@ -17,7 +19,7 @@ public class ReviewsDTO {
     public ReviewsDTO(){}
 //Construtor inteiro
     public ReviewsDTO(User userId, Long movieId, Byte rating, String comment, LocalDate date) {
-        this.userId = userId;
+        this.Author = userId;
         this.movieId = movieId;
         this.rating = rating;
         this.comment = comment;
@@ -33,11 +35,11 @@ public class ReviewsDTO {
     }
 
     public User getUserId() {
-        return userId;
+        return Author;
     }
 
     public void setUserId(User userId) {
-        this.userId = userId;
+        this.Author = userId;
     }
 
     public Long getMovieId() {
@@ -70,6 +72,10 @@ public class ReviewsDTO {
 
     private void setDate() {
         this.date = date;
+    }
+    public Reviews toModel() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'toModel'");
     }
 
 }
